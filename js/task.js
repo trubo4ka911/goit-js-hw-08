@@ -1,3 +1,5 @@
+'use strict';
+
 import { default as imageRef } from "./gallery-items.js";
 
 class Gallery {
@@ -152,7 +154,7 @@ class Gallery {
 		}
 	}
 }
-(() => {
+
 	const galleryObject = new Gallery(
 		imageRef,
 		".js-gallery",
@@ -167,4 +169,4 @@ class Gallery {
 		"click",
 		galleryObject.openLightBoxHandler.bind(galleryObject),
 	);
-})();
+
