@@ -20,10 +20,15 @@ function createGallaryMarkup(galleryItems) {
         .map(({ preview, original, description }) => {
 			return `
 		<li class="gallery__item">
-            <img class="gallery__image js_gallery_items" 
-            src = "${preview}"
-            data-source = "${original}"
-            alt = ${description}">
+			<a class="gallery__link"
+				href = "${original}"
+                onclick="event.preventDefault()"
+			>
+				<img class="gallery__image js_gallery_items" 
+				src = "${preview}"
+				data-source = "${original}"
+				alt = ${description}">
+			</a>
         </li>
 		`;
     })
@@ -34,13 +39,15 @@ function onImageContainerClick(e) {
     openModal.classList.add('is-open');
     const imageUrl = e.target.getAttribute('data-source');
     imageRef.src = imageUrl;
-    window.addEventListener('keyup', controlModuleWindow)
+    window.addEventListener('keyup', controlModulWindow)
+
+    
 };
 
 function closeModalWindow() {
     openModal.classList.remove('is-open');
     imageRef.src = "";
-    window.removeEventListener('keyup', controlModuleWindow);
+    window.removeEventListener('keyup', controlModulWindow);
 };
 
 function onCloseClick() {
@@ -48,14 +55,14 @@ function onCloseClick() {
 };
 
 function onBackdropClick(e) {
-    if (e.target === e.currentTaget) {
+    if (e.target === e.currentTarget) {
         closeModalWindow();
     };
 };
 
-function controlModuleWindow(e) {
-    const keyNavigation = document.querySelectorAll('.js_gallery_items');
-    const imageArray = Array.from(keyNavigation);
+function controlModulWindow(e) {
+	const imageNodeList = document.querySelectorAll('.js_gallery_items');
+    const imageArray = Array.from(imageNodeList);
     const imageSrcArray = imageArray.map(image => {
         const src = image.getAttribute('data-source');
         return src;
