@@ -1,5 +1,7 @@
 'use strict';
 
+import { default as galleryItems } from "./gallery-items.js";
+
 const imageContainer = document.querySelector('.js-gallery');
 const imagesCards = createGallaryMarkup(galleryItems);
 const openModal = document.querySelector('.js-lightbox');
