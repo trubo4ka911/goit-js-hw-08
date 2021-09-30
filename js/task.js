@@ -39,9 +39,7 @@ function onImageContainerClick(e) {
     openModal.classList.add('is-open');
     const imageUrl = e.target.getAttribute('data-source');
     imageRef.src = imageUrl;
-    window.addEventListener('keyup', controlModulWindow)
-
-    
+    window.addEventListener('keyup', controlModulWindow)    
 };
 
 function closeModalWindow() {
